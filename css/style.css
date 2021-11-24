@@ -1,0 +1,164 @@
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+body h1 {
+  text-align: center;
+}
+body #dropdown {
+  display: flex;
+  --border-radius: 0.35rem;
+  --frame: #8e9094;
+  --border-thickness: 2px;
+  background: var(--frame);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: 0.25s -0.1s;
+}
+body #dropdown.shake {
+  --frame: #d8334a;
+  -webkit-animation: shake 0.5s;
+          animation: shake 0.5s;
+}
+@-webkit-keyframes shake {
+  10% {
+    transform: translateX(0.5rem);
+  }
+  25% {
+    transform: translateX(-0.4rem);
+  }
+  40% {
+    transform: translateX(0.3rem);
+  }
+  65% {
+    transform: translateX(-0.2rem);
+  }
+  80% {
+    transform: translateX(0.1rem);
+  }
+  100% {
+    transform: translateX(0rem);
+  }
+}
+@keyframes shake {
+  10% {
+    transform: translateX(0.5rem);
+  }
+  25% {
+    transform: translateX(-0.4rem);
+  }
+  40% {
+    transform: translateX(0.3rem);
+  }
+  65% {
+    transform: translateX(-0.2rem);
+  }
+  80% {
+    transform: translateX(0.1rem);
+  }
+  100% {
+    transform: translateX(0rem);
+  }
+}
+body #dropdown:hover {
+  --frame: #717272;
+}
+body #dropdown.valid {
+  --frame: #a0d468;
+}
+body #dropdown.valid:hover {
+  --frame: #8cc152;
+}
+body #dropdown .tag {
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  position: relative;
+  width: 32px;
+  background: var(--frame);
+  transition: background 0.25s -0.1s;
+}
+body #dropdown .tag .arrow {
+  border: 0.5rem solid transparent;
+  border-top-color: white;
+  border-width: 0.8rem 0.4rem 0 0.4rem;
+  transform: translateY(0.1rem);
+}
+body #dropdown .tag.disabled {
+  cursor: wait;
+}
+body #dropdown .tag.disabled .arrow {
+  opacity: 0.25;
+}
+body #dropdown .dropdown {
+  display: flex;
+  width: 224px;
+  height: 48px;
+  border: 2px solid var(--frame);
+  transition: border-color 0.25s -0.1s;
+  border-radius: calc(var(--border-radius) - var(--border-thickness));
+  overflow: hidden;
+  pointer-events: none;
+}
+body #dropdown .dropdown .gap {
+  position: relative;
+  width: 0px;
+  transition: 0.05s;
+}
+body #dropdown .dropdown .wheel {
+  flex-grow: 20;
+  flex-basis: 0;
+  overflow: hidden;
+  border-radius: 0;
+  transition: 0.25s;
+  background: url(../img/1.svg) white;
+}
+body #dropdown .dropdown .wheel .container {
+  position: relative;
+  width: 224px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+body #dropdown .dropdown .wheel .container > div {
+  display: grid;
+  place-items: center;
+  height: 48px;
+  width: 100%;
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+}
+body #dropdown .dropdown .wheel.wheel1 {
+  border-radius: calc(var(--border-radius) - var(--border-thickness)) 0 0 calc(var(--border-radius) - var(--border-thickness));
+  transition: background-position 3s cubic-bezier(0.3, 0, 0.1, 1), 0.25s border-radius;
+}
+body #dropdown .dropdown .wheel.wheel2 {
+  background-position-x: -74.6666666667px;
+  transition: background-position 4s cubic-bezier(0.3, 0, 0.1, 1), 0.25s border-radius, 0.25s box-shadow;
+}
+body #dropdown .dropdown .wheel.wheel3 {
+  background-position-x: -149.3333333333px;
+  border-radius: 0 calc(var(--border-radius) - var(--border-thickness)) calc(var(--border-radius) - var(--border-thickness)) 0;
+  transition: background-position 5s cubic-bezier(0.3, 0, 0.1, 1), 0.25s border-radius;
+}
+body #dropdown .dropdown.show-gap .wheel {
+  border-radius: calc(var(--border-radius) - var(--border-thickness));
+}
+body #dropdown .dropdown.show-gap .wheel.wheel1 {
+  box-shadow: inset -1px 0 var(--frame);
+}
+body #dropdown .dropdown.show-gap .wheel.wheel2 {
+  box-shadow: inset 1px 0 var(--frame), inset -1px 0 var(--frame);
+}
+body #dropdown .dropdown.show-gap .wheel.wheel2 .container {
+  left: -74.9966666667px;
+}
+body #dropdown .dropdown.show-gap .wheel.wheel3 {
+  box-shadow: inset 1px 0 var(--frame);
+}
+body #dropdown .dropdown.show-gap .wheel.wheel3 .container {
+  left: -149.9933333333px;
+}
